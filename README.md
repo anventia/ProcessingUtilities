@@ -3,7 +3,12 @@ Useful Processing fuctions
 
 `button(x,y, w,h, r, mode, c, d);`
   - 
-- Makes a tactile button that returns `true` if clicked
+Makes a tactile button that returns `true` if clicked.
+```
+if(button(...)) {  // draws button and detects when clicked
+  // do stuff when clicked
+}
+```
 - `x, y`: Coordinates of rectangle center
 - `w, h`: Width and height
 - `r`: Corner radius

@@ -19,8 +19,12 @@ boolean button(float x,float y, float w,float h, float r, String mode, color c, 
       case "Pop": 
         buttonPop(x,y, w,h, r, d);
         break;
-      case "both":  // Both hover features
-      case "Both":
+      case "stroke":
+      case "Stroke":
+        hStroke(x,y, w,h, r, c);
+        break;
+      case "HP":  // Highlight + Pop 
+      case "hp":
         highlight(x,y, w,h, r, c);
         buttonPop(x,y, w,h, r, d);
         break;
@@ -33,10 +37,6 @@ boolean button(float x,float y, float w,float h, float r, String mode, color c, 
   return false;
 }
 
-boolean mouseClick = false;
-void mouseClicked() {
-  mouseClick = true;
-}
 void highlight(float x,float y, float w,float h, float r, color c) {
   fill(c);
   rect(x,y, w,h, r);  // Box
@@ -45,5 +45,10 @@ void highlight(float x,float y, float w,float h, float r, color c) {
 void buttonPop(float x,float y, float w,float h, float r, float d) {
   w += d/2;
   h += d/2;
+  rect(x,y, w,h, r);  // Box
+}
+
+void hStroke(float x,float y, float w,float h, float r, color c) {
+  stroke(c);
   rect(x,y, w,h, r);  // Box
 }

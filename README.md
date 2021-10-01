@@ -15,5 +15,6 @@ if(button(...)) {  // draws button and detects when clicked
 - `mode`: Mouse hover tactility mode:
   - "Highlight": Highlights the button in a different color
   - "Pop": Makes the button 'pop out'
+  - "Stroke" Highlights the stroke in a different color
 - `c`: Highlight color
 - `d`: Pop out distance

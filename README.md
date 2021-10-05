@@ -1,5 +1,7 @@
 # ProcessingUtilities
-Useful Processing fuctions
+Useful functions for making Processing projects.
+
+<br/>
 
 `button(x,y, w,h, r, mode, c, d);`
   -
@@ -31,3 +33,5 @@ rect(width/2,height/2, 300*scaleX, 400*scaleY);
 - Multiply any value you want to scale with window `width` or `height` with `scaleX` or scaleY`.
 - Usefull for `fullScreen()` projects
 - Change 1000x700 in the code to whatever your default window resolution is: what you coded everything in originally
+
+<br/>

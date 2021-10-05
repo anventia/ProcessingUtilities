@@ -25,7 +25,8 @@ if(button(...)) {  // draws button and detects when clicked
 - 
 Allows UI elements to scale with window size.
 ```
-rect(width/2,height/2, 300*scaleX, 300*scaleY);  // Example
+// Example: 300x400 rect in default window size will scale to the equivalent ratio in a different window size. //
+rect(width/2,height/2, 300*scaleX, 400*scaleY);  
 ```
 - Multiply any value you want to scale with window `width` or `height` with `scaleX` or scaleY`.
 - Usefull for `fullScreen()` projects

@@ -24,7 +24,7 @@ if(button(...)) {  // draws button and detects when clicked
 <br/>
 
 `scaleX, scaleY`
-- 
+ -
 Allows UI elements to scale with window size.
 ```
 // Example: 300x400 rect in default window size will scale to the equivalent ratio in a different window size. //
@@ -35,3 +35,12 @@ rect(width/2,height/2, 300*scaleX, 400*scaleY);
 - Change `1000` and `700` in the code to whatever your default window resolution is: what you coded everything in originally
 
 <br/>
+
+`polygon(x,y, radius, sides);`
+ -
+ Creates a regular polygon with any number of sides.
+ ```
+ // Hexagon with a radius of 100px
+ polygon(0,0, 100,6);
+ ```
+ - Self-explanatory.

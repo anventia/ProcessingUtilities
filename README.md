@@ -41,6 +41,6 @@ rect(width/2,height/2, 300*scaleX, 400*scaleY);
  Creates a regular polygon with any number of sides.
  ```
  // Hexagon with a radius of 100px
- polygon(0,0, 100,6);
+ polygon(0,0, 100, 6);
  ```
  - Self-explanatory.

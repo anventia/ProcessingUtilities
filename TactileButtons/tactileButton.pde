@@ -33,8 +33,8 @@ boolean button(String shape, float x,float y, float w,float h, float r, String m
 
 void highlight(String shape, float x,float y, float w,float h, float r, String mode, color c, float d) {
   switch(mode) {  // Hover mode
-      case "highlight":  // Highlights fill
-      case "Highlight":
+      case "fill":  // Highlights fill
+      case "Fill":
         hFill(shape, x,y, w,h, r, c);
         break;
       case "pop":  // Pops out button

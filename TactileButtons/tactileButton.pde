@@ -6,49 +6,82 @@ mode: Mouse hover tactility mode
 c: Highlight color
 d: Pop out distance
 */
-boolean button(float x,float y, float w,float h, float r, String mode, color c, float d) {
+boolean button(String shape, float x,float y, float w,float h, float r, String mode, color c, float d) {
   rectMode(CENTER);
-  rect(x,y, w,h, r);  // Box
-  if(mouseX >= x-w/2 && mouseX <= x+w/2 && mouseY >= y-h/2 && mouseY <= y+h/2) {  // Mouse within box boundaries
-    switch(mode) {  // Hover mode
-      case "highlight":  // Highlights button
-      case "Highlight":
-        highlight(x,y, w,h, r, c);
-        break;
-      case "pop":  // Pops out button
-      case "Pop": 
-        buttonPop(x,y, w,h, r, d);
-        break;
-      case "stroke":
-      case "Stroke":
-        hStroke(x,y, w,h, r, c);
-        break;
-      case "HP":  // Highlight + Pop 
-      case "hp":
-        highlight(x,y, w,h, r, c);
-        buttonPop(x,y, w,h, r, d);
-        break;
-    }
-    if(mouseClick) {  // If button is clicked
-      mouseClick = false;  // Reset mouse click
-      return true;
-    }
-  } 
+  drawButton(shape, x,y, w,h, r);
+  switch(shape) {  // Detects mouse hover differently for different shapes
+    case "rect":
+      if(mouseX >= x-w/2 && mouseX <= x+w/2 && mouseY >= y-h/2 && mouseY <= y+h/2) {  // Mouse within button boundaries (RECTANGLE)
+        highlight(shape, x,y, w,h, r, mode, c, d);
+        if(mouseClick) {  // If button is clicked
+          mouseClick = false;  // Reset mouse click
+          return true;
+        } 
+      } break;
+      
+    case "circle":
+      if(dist(mouseX,mouseY, x,y) <= w/2) {  // Mouse within button boundaries
+        highlight(shape, x,y, w,h, r, mode, c, d);
+        if(mouseClick) {  // If button is clicked
+          mouseClick = false;  // Reset mouse click
+          return true;
+        } 
+      } break;
+  }
   return false;
 }
 
-void highlight(float x,float y, float w,float h, float r, color c) {
-  fill(c);
-  rect(x,y, w,h, r);  // Box
+void highlight(String shape, float x,float y, float w,float h, float r, String mode, color c, float d) {
+  switch(mode) {  // Hover mode
+      case "highlight":  // Highlights fill
+      case "Highlight":
+        hFill(shape, x,y, w,h, r, c);
+        break;
+      case "pop":  // Pops out button
+      case "Pop": 
+        hPop(shape, x,y, w,h, r, d);
+        break;
+      case "stroke":  // Highlights stroke
+      case "Stroke":
+        hStroke(shape, x,y, w,h, r, c);
+        break;
+      case "FP":  // Fill + Pop 
+      case "fp":
+        hFill(shape, x,y, w,h, r, c);
+        hPop(shape, x,y, w,h, r, d);
+        break;
+      case "SP":  // Stroke + Pop
+      case "sp":
+        hStroke(shape, x,y, w,h, r, c);
+        hPop(shape, x,y, w,h, r, d);
+        break;
+    }
 }
 
-void buttonPop(float x,float y, float w,float h, float r, float d) {
+void hFill(String shape, float x,float y, float w,float h, float r, color c) {  // Hightlight with fill color
+  fill(c);
+  drawButton(shape, x,y, w,h, r);
+}
+
+void hPop(String shape, float x,float y, float w,float h, float r, float d) {  // Highlight with "pop-out" effect
   w += d/2;
   h += d/2;
-  rect(x,y, w,h, r);  // Box
+  drawButton(shape, x,y, w,h, r);
 }
 
-void hStroke(float x,float y, float w,float h, float r, color c) {
+void hStroke(String shape, float x,float y, float w,float h, float r, color c) {  // Highlight with stroke color
   stroke(c);
-  rect(x,y, w,h, r);  // Box
+  drawButton(shape, x,y, w,h, r);
+}
+
+void drawButton(String shape, float x,float y, float w,float h, float r) {  // Draw button, rect or circle
+  switch(shape) {
+    case "rect":   rect(x,y, w,h, r); break;  // Rectangle
+    case "circle": circle(x,y, w);    break;  // Circle
+  } 
+}
+
+boolean mouseClick = false;
+void mouseClicked() {
+  mouseClick = true;  // Mouse detection for buttons
 }

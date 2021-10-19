@@ -23,6 +23,7 @@ if(button(...)) {  // draws button and detects when clicked
   - "stroke": Highlights the stroke in a different color
   - "fp": Fill and pop effects.
   - "sp": Stroke and pop effects.
+  - "none": No effect. (can also be set to any string that's not an option for the same result)
 - `c`: Highlight color (Only used when `mode` == "fill" or "fp")
 - `d`: Pop out distance (Only used when `mode` == "pop", "fp", or "sp")
 

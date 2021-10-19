@@ -3,7 +3,7 @@ Useful functions for making Processing projects.
 
 <br/>
 
-`button(x,y, w,h, r, mode, c, d);`
+`button(shape, x,y, w,h, r, mode, c, d);`
   -
 Makes a tactile button that returns `true` if clicked.
 ```processing
@@ -11,15 +11,20 @@ if(button(...)) {  // draws button and detects when clicked
   // do stuff when clicked
 }
 ```
+- `shape`: Shape of the button.
+  - "rect": Rectangular button.
+  - "circle": Circular button. Uses `w` as the diameter, and ignores `h, r`.
 - `x, y`: Coordinates of rectangle center
 - `w, h`: Width and height
 - `r`: Corner radius
 - `mode`: Mouse hover tactility mode:
-  - "Highlight": Highlights the button in a different color
-  - "Pop": Makes the button 'pop out'
-  - "Stroke": Highlights the stroke in a different color
-- `c`: Highlight color
-- `d`: Pop out distance
+  - "fill": Highlights the button in a different color
+  - "pop": Makes the button 'pop out'
+  - "stroke": Highlights the stroke in a different color
+  - "fp": Fill and pop effects.
+  - "sp": Stroke and pop effects.
+- `c`: Highlight color (Only used when `mode` == "fill" or "fp")
+- `d`: Pop out distance (Only used when `mode` == "pop", "fp", or "sp")
 
 <br/>
 

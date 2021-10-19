@@ -69,7 +69,7 @@ void draw() {
 ```
 - `x,y`: Coordinates of the GIF. (relative offset set by `imageMode()`)
 - `w,h`: Width and height of the GIF.
-- `file`: First part of filename before frame number, ex. "frame-1.png" -> `file = "frame-1"`
-- `ext`: Second part of filename after frame number, ex. "frame-1.png" -> `ext = ".png"`
+- `file`: First part of filename before frame number `n`, ex. "frame-1.png" -> `file = "frame-1"`
+- `ext`: Second part of filename after frame number `n`, ex. "frame-1.png" -> `ext = ".png"`
 - `totalFrames`: Number of the last frame.
 - `startFrame`: Frame number to start the animation at.

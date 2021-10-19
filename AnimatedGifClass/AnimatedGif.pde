@@ -19,7 +19,9 @@ class AnimatedGif {
   }
   
   
-  // Play + Show Gif //
-  void play() { if(currentFrame == totalFrames) currentFrame = 0; else currentFrame++; }
-  void show() { image(gif[currentFrame], x,y, w,h); }
+  // Actions //
+  void play() { if(currentFrame == totalFrames) currentFrame = 0; else currentFrame++; }  // Play gif
+  void show() { image(gif[currentFrame], x,y, w,h); }  // Show gif
+  void setFrame(int frame) { currentFrame = frame; }  // Sets frame to value.
+  
 }

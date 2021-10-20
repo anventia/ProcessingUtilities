@@ -6,6 +6,8 @@ mode: Mouse hover tactility mode
 c: Highlight color
 d: Pop out distance
 */
+
+
 boolean button(String shape, float x,float y, float w,float h, float r, String mode, color c, float d) {
   rectMode(CENTER);
   drawButton(shape, x,y, w,h, r);
@@ -13,20 +15,14 @@ boolean button(String shape, float x,float y, float w,float h, float r, String m
     case "rect":
       if(mouseX >= x-w/2 && mouseX <= x+w/2 && mouseY >= y-h/2 && mouseY <= y+h/2) {  // Mouse within button boundaries (RECTANGLE)
         highlight(shape, x,y, w,h, r, mode, c, d);
-        if(mouseClick) {  // If button is clicked
-          mouseClick = false;  // Reset mouse click
-          return true;
-        } 
+        return mouseClick;
       } break;
       
     case "circle":
       if(dist(mouseX,mouseY, x,y) <= w/2) {  // Mouse within button boundaries
         highlight(shape, x,y, w,h, r, mode, c, d);
-        if(mouseClick) {  // If button is clicked
-          mouseClick = false;  // Reset mouse click
-          return true;
-        } 
-      } break;
+        return mouseClick;
+      } break; 
   }
   return false;
 }
@@ -35,7 +31,7 @@ void highlight(String shape, float x,float y, float w,float h, float r, String m
   switch(mode) {  // Hover mode
       case "fill":  // Highlights fill
       case "Fill":
-        hFill(shape, x,y, w,h, r, c);
+        hFill(shape, x,y, w,h, r, c);  
         break;
       case "pop":  // Pops out button
       case "Pop": 
@@ -82,6 +78,9 @@ void drawButton(String shape, float x,float y, float w,float h, float r) {  // D
 }
 
 boolean mouseClick = false;
-void mouseClicked() {
-  mouseClick = true;  // Mouse detection for buttons
+boolean wasPressed = false;
+void detectClicks() {
+  mouseClick = false;
+  if(mousePressed) wasPressed = true;
+  if(wasPressed && !mousePressed) { mouseClick = true; wasPressed = false;}
 }

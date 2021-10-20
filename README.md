@@ -7,6 +7,8 @@ Useful functions for making Processing projects.
   -
 Makes a tactile button that returns `true` if clicked.
 ```processing
+detectClicks(); // Sets mouseClick to `true` for one frame when mouse released
+
 if(button(...)) {  // draws button and detects when clicked
   // do stuff when clicked
 }
